@@ -1,0 +1,53 @@
+@font-face {
+    font-family: "Clash Display";
+    src: url(/fonts/ClashDisplay-Variable.ttf) format("truetype");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "General Sans";
+    src: url(/fonts/GeneralSans-Variable.ttf) format("truetype");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "General Sans";
+    src: url(/fonts/GeneralSans-Variable.ttf) format("truetype");
+    font-weight: 500;
+}
+
+html[data-theme="dark"] {
+    --primary-background-color: #191B24;
+    --primary-foreground-color: #f6f6f6;
+    --primary-button-bg: #72ddf7;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+body,
+html {
+    background-color: var(--primary-background-color);
+    color: var(--primary-foreground-color);
+    font-family: "General Sans";
+    height: 100%;
+    overflow-x: hidden;
+}
+
+#root {
+    height: 100%;
+}
+
+button {
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    font-family: "Clash Display";
+    font-size: 12px;
+    justify-content: center;
+    padding: 0;
+}

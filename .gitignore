@@ -1,0 +1,9 @@
+# Node Environment
+node_modules
+
+# Envitonment Variables
+.env
+.env.local
+
+# MacOS Generated Files
+.DS_Store

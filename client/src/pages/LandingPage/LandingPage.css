@@ -1,0 +1,15 @@
+.signupButton__jH7i {
+    background-color: var(--primary-button-bg);
+    border: none;
+    color: #f6f6f6;
+    height: 32px;
+    width: 90px;
+}
+
+.loginButton__jH7i {
+    background-color: #f6f6f6;
+    border: none;
+    color: #191B24;
+    height: 32px;
+    width: 90px;
+}
