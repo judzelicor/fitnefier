@@ -11,6 +11,10 @@
     border-radius: 7px;
 }
 
+.loginButton__pVy5:active {
+    transform: scale(0.95);
+}
+
 .formLabel__pVy5 {
     font-weight: bold;
     font-size: 14px;

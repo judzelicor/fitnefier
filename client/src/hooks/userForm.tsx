@@ -21,8 +21,12 @@ function useForm(initialValues: User) {
     }
 
     const handleFormErrors = (errors: {[key: string]: string}) => {
+        console.log(errors, "setFormErrors fired")
         setFormErrors(errors);
     }
+
+    useEffect(() => {
+    })
 
     return {
         values: formState,

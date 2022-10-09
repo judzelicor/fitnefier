@@ -46,7 +46,7 @@ function TopBar() {
                             <nav className={ "topbarMainNavigation__lK8y" }>
                                 <ul className={ "topbarMainmenuList__lK8y" }>
                                     <li>
-                                        <Link className={ "topbarMenuLink__lK8y" }to={"/"}>Home</Link>
+                                        <Link className={ "topbarMenuLink__lK8y" }to={"/home"}>Home</Link>
                                     </li>
                                     <li>
                                         <Link className={ "topbarMenuLink__lK8y" } to={"/trending"}>Trending</Link>

@@ -138,6 +138,12 @@
     border-radius: 9px;
 }
 
+.loginButton__jH7i:active,
+.signupButton__jH7i:active {
+    border-radius: 9px;
+    transform: scale(0.95);
+}
+
 .loginButton__lK8y {
     background-color: #f6f6f6;
     color: #171717;

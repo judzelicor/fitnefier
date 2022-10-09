@@ -1,6 +1,7 @@
 import "./FormErrorMessage.css";
 
 function InputErrorMessage({ message }: { message: string }) {
+    console.log(message)
     return (
         <div>
             <div className={ "formInputErrorWrapper__Llm9" }>

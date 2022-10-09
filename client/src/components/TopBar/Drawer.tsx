@@ -29,9 +29,9 @@ function Drawer({ toggleDrawerVisibility }: { toggleDrawerVisibility: () => void
                             <ul className={ "drawerMenuList__lK8y" }>
                                 <li>
                                     <div
-                                        onClick={ () => redirect("/")}
+                                        onClick={ () => redirect("/home")}
                                     >
-                                        <Link className={ "drawerMenuLink__lK8y" } to={ "/" }>Home</Link>
+                                        <Link className={ "drawerMenuLink__lK8y" } to={ "/home" }>Home</Link>
                                     </div>
                                 </li>
                                 <li>

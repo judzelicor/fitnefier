@@ -9,12 +9,15 @@ import axios from "axios";
 import { useUser } from "../../hooks";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { InputErrorMessage } from "../../components";
+import { validateEmail } from "../../utils";
 
 function LoginPage() {
     useUser();
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const [loginError, setLoginError] = useState("");
 
     const form = useForm({
         userEmail: "",
@@ -22,12 +25,17 @@ function LoginPage() {
     });
 
     const handleSubmit = (event: Event) => {
-        const errors: { [key: string]: string } = {}
+        let loginErrorMessage;
+        let errors: { [key: string]: string } = {}
 
         event.preventDefault();
 
         if (!form.values.userEmail || !form.values.userPassword) {
             errors["missingFields"] = "All fields are required to log in."
+        }
+
+        else if (!validateEmail(form.values.userEmail)) {
+            errors["userEmail"] = "The email address you entered contains invalid characters";
         }
 
         form.raiseError(errors);
@@ -43,15 +51,24 @@ function LoginPage() {
         })
         .then(result => {
             const user = result.data;
-            console.log(user, "sdsdf")
+
             dispatch({ type: "LOGIN_USER", payload: user});
             localStorage.setItem("user", JSON.stringify(user))
             navigate("/home")
-        })
-    }
 
+        }).catch(error => {
+            if (error) {
+                loginErrorMessage = error.response.data.message;
+                form.raiseError({"loginError": loginErrorMessage});
+            }
+        })
+        
+    }
+    console.log("rerender")
     return (
         <Base documentTitle={ "Login | Fitnefier" }>
+            <>{ form.errors["loginError"] && <InputErrorMessage message={ form.errors["loginError"] } /> }</>
+            <>{ form.errors["missingFields"] && <InputErrorMessage message={ form.errors["missingFields"] } /> }</>
             <form className={ "loginForm__pVy5" }>
                 <div>
                     <label className={ "formLabel__pVy5" }>Email address or username</label>
@@ -61,6 +78,7 @@ function LoginPage() {
                         placeholder={ "Your email address or username" } 
                         onChange={(event) => form.handleFormChanges("userEmail", event.target.value)}
                     />
+                    <>{ form.errors["userEmail"] && <InputErrorMessage message={ form.errors["userEmail"] } /> }</>
                 </div>
                 <div>
                     <label className={ "formLabel__pVy5" }>Password</label>
