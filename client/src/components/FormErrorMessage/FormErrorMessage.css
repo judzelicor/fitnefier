@@ -1,0 +1,15 @@
+.formInputErrorMessage__Llm9 {
+    color: #f87171;
+    font-family: "Satoshi";
+    font-size: 12px;
+}
+
+.formInputErrorIcon__Llm9 {
+    width: 12px;
+}
+
+.formInputErrorWrapper__Llm9 {
+    align-items: center;
+    display: flex;
+    gap: 7px;
+}

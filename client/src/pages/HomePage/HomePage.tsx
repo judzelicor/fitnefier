@@ -1,22 +1,19 @@
 import { useEffect } from "react";
+import { useSelector } from "react-redux";
 import axios from "axios";
 import {
     Base
 } from "../../layouts";
+import { useUser } from "../../hooks";
 
 function HomePage() {
-    useEffect(() => {
-        const fetchWorkouts = async () => {
-            const response = await axios({
-                method: "GET",
-                url: "/workouts"
-            });
-        }
-    }, []);
+    useUser();
+
+    const user = useSelector(state => state.user);
 
     return (
         <Base documentTitle={ "Dashboard | Fitnefier" }>
-            <h1>Welcome back, Sylvester!</h1>
+            <h1>Welcome back, { `${ user.firstName } ${ user.lastName }` }!</h1>
         </Base>
     )
 }

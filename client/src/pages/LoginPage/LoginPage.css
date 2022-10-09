@@ -1,0 +1,17 @@
+.loginButton__pVy5 {
+    background-color: #72ddf7;
+    border-radius: 4px;
+    font-weight: 500;
+    height: 32px;
+    transition: 500ms cubic-bezier(0.16, 1, 0.3, 1);
+    width: 80px;
+}
+
+.loginButton__pVy5:hover {
+    border-radius: 7px;
+}
+
+.formLabel__pVy5 {
+    font-weight: bold;
+    font-size: 14px;
+}
