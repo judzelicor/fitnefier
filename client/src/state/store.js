@@ -3,9 +3,11 @@ import {
     combineReducers
 } from "redux";
 import {
-    userReducer
+    userReducer,
+    userWorkoutsReducer
 } from "../reducers";
 
 export const store = createStore(combineReducers({
-    user: userReducer
+    user: userReducer,
+    userWorkouts: userWorkoutsReducer
 }));

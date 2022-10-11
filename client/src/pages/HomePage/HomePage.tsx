@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import {
     Base
@@ -10,9 +10,12 @@ import { WorkoutForm } from "../../components";
 
 function HomePage() {
     const user = useUser();
+    const workouts = useSelector(state => state.userWorkouts)
+    const dispatch = useDispatch();
     const navigate = useNavigate();
 
     useEffect(() => {
+        console.log(user)
         const fetchUserWorkouts = () => {
             axios({
                 method: "GET",
@@ -22,7 +25,11 @@ function HomePage() {
                     "Authorization": `Bearer ${ user.token }`
                 }
             })
-            .then(result => {})
+            .then(result => {
+                const _workouts = result.data
+
+                dispatch({ type: "FETCHED_USER_WORKOUTS", payload: _workouts })
+            })
             .catch(error => {
                 if (error) {
                     navigate("/");
@@ -38,7 +45,18 @@ function HomePage() {
     return (
         <Base documentTitle={ "Dashboard | Fitnefier" }>
             <h1>Welcome back, { `${ user.firstName } ${ user.lastName }` }!</h1>
-            <div className={ "workouts" }></div>
+            <div className={ "workouts" }>
+                <ul>
+                    {
+                        workouts.map(workout => {
+                            console.log(workout)
+                            return (
+                                <li>{ workout.exercise }</li>
+                            )
+                        })
+                    }
+                </ul>
+            </div>
             <div className={ "workoutForm" }>
                 <WorkoutForm />
             </div>

@@ -4,7 +4,7 @@ import {
 } from "react";
 
 interface User {
-    [key: string]: string;
+    [key: string]: string | number;
 }
 
 function useForm(initialValues: User) {

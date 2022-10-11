@@ -3,15 +3,14 @@ import mongoose from "mongoose";
 
 
 export async function fetchWorkouts(request, response) {
-    // let workouts;
-    // let owner;
+    let workouts;
+    let owner;
 
-    // owner = request.user.id;
+    owner = request.user.id;
+    console.log(owner)
+    workouts = await WorkoutModel.find({ owner }).sort({ createdAt: -1 });
 
-    // workouts = await WorkoutModel.find({ owner }).sort({ createdAt: -1 });
-    // console.log(workouts)
-    // response.status(200).json(workouts);
-    response.status(200).json({ message: "Yay" })
+    response.status(200).json(workouts);
 }
 
 
@@ -41,12 +40,15 @@ export async function createWorkout(request, response) {
         exercise,
         repititions,
         duration,
+        weight
     } = request.body;
 
     try {
         const owner = request.user._id;
+
         workout = await WorkoutModel.create({
             exercise,
+            weight,
             repititions,
             duration,
             owner
@@ -56,6 +58,7 @@ export async function createWorkout(request, response) {
     }
 
     catch(error) {
+        console.log(error)
         response.status(400).json({ error: error.message });
     }
 

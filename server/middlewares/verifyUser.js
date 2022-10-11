@@ -5,17 +5,17 @@ async function verifyUser(request, response, next) {
     let jwtToken;
 
     const { authorization } = request.headers;
-
     if (!authorization) {
         return response.status(401).json({ error: "Authorization token required." });
     }
-
+    
     jwtToken = authorization.split(" ")[1];
-
+    
+    console.log(jwtToken)
     try {
         const { id } = jwt.verify(jwtToken, process.env.JWT_SECRET);
-
-        request.user = await UserModel.findOne({ id }).select('id');
+        console.log(id)
+        request.user = await UserModel.findOne({ _id: id }).select('id');
         console.log(request.user)
         next();
     }
