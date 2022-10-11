@@ -15,7 +15,6 @@ function HomePage() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        console.log(user)
         const fetchUserWorkouts = () => {
             axios({
                 method: "GET",
@@ -42,6 +41,8 @@ function HomePage() {
 
     }, [])
 
+    console.log(workouts)
+
     return (
         <Base documentTitle={ "Dashboard | Fitnefier" }>
             <h1>Welcome back, { `${ user.firstName } ${ user.lastName }` }!</h1>
@@ -49,7 +50,6 @@ function HomePage() {
                 <ul>
                     {
                         workouts.map(workout => {
-                            console.log(workout)
                             return (
                                 <li>{ workout.exercise }</li>
                             )

@@ -7,9 +7,9 @@ function useLogout() {
     const navigate = useNavigate();
     
     useEffect(() => {
+        dispatch({ type: "FLUSH_USER_WORKOUTS" });
         dispatch({ type: "LOGOUT_USER" });
         localStorage.removeItem("user");
-        navigate("/");
 
     }, [])
 

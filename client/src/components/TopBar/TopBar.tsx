@@ -28,6 +28,7 @@ function TopBar() {
 
     const logoutUser = () => {
         dispatch({ type: "LOGOUT_USER" });
+        dispatch({ type: "FLUSH_USER_WORKOUTS" });
         localStorage.removeItem("user");
         navigate("/");
     }
