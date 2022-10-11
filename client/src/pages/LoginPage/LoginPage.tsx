@@ -51,6 +51,7 @@ function LoginPage() {
         })
         .then(result => {
             const user = result.data;
+            console.log(user)
 
             dispatch({ type: "LOGIN_USER", payload: user});
             localStorage.setItem("user", JSON.stringify(user))
@@ -64,7 +65,7 @@ function LoginPage() {
         })
         
     }
-    console.log("rerender")
+
     return (
         <Base documentTitle={ "Login | Fitnefier" }>
             <>{ form.errors["loginError"] && <InputErrorMessage message={ form.errors["loginError"] } /> }</>

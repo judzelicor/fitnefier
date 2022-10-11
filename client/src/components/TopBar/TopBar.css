@@ -11,7 +11,7 @@
 .topbarWrapper__lK8y {
     align-items: center;
     display: grid;
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: auto auto;
     height: 80px;
     margin: 0 auto;
     max-width: 1450px;
@@ -172,6 +172,10 @@
 }
 
 @media only screen and (min-width: 768px) {
+    .topbarWrapper__lK8y {
+        grid-template-columns: auto 1fr auto;
+    }
+
     .mainMenu__lK8y {
         display: block;
     }

@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 function useUser() {
+    let user: string;
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    user = JSON.parse(localStorage.getItem("user"));
 
     useEffect(() => {
-        const user: string = JSON.parse(localStorage.getItem("user"));
 
         if (user) {
             dispatch({ type: "LOGIN_USER", payload: user });
@@ -16,6 +17,8 @@ function useUser() {
             navigate("/login")
         }
     }, [])
+
+    return user;
 }
 
 export default useUser;

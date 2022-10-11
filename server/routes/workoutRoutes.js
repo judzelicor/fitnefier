@@ -8,10 +8,13 @@ import {
     deleteWorkouts
 } from "../controllers/index.js";
 
+import { verifyUser } from "../middlewares/index.js";
+
 let router;
 
 router = express.Router();
 
+router.use(verifyUser);
 router.get("/", fetchWorkouts);
 router.delete("/", deleteWorkouts);
 router.delete("/:id", deleteWorkout);

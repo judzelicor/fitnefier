@@ -3,11 +3,15 @@ import mongoose from "mongoose";
 
 
 export async function fetchWorkouts(request, response) {
-    let workouts;
+    // let workouts;
+    // let owner;
 
-    workouts = await WorkoutModel.find({}).sort({ createdAt: -1 });
+    // owner = request.user.id;
 
-    response.status(200).json(workouts);
+    // workouts = await WorkoutModel.find({ owner }).sort({ createdAt: -1 });
+    // console.log(workouts)
+    // response.status(200).json(workouts);
+    response.status(200).json({ message: "Yay" })
 }
 
 
@@ -36,14 +40,16 @@ export async function createWorkout(request, response) {
     const {
         exercise,
         repititions,
-        duration
+        duration,
     } = request.body;
 
     try {
+        const owner = request.user._id;
         workout = await WorkoutModel.create({
             exercise,
             repititions,
-            duration
+            duration,
+            owner
         });
 
         response.status(200).json(workout);

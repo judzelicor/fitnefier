@@ -18,6 +18,11 @@ workoutSchema = new Schema({
     duration: {
         type: Number,
         required: true
+    },
+    owner: {
+        type: String,
+        required: true,
+        unique: true
     }
 }, { timestamps: true });
 

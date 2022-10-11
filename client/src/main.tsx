@@ -7,7 +7,7 @@ import { store } from "./state/store.js";
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <Provider store={store}>
+  <Provider store={ store }>
     <Router>
       <App />
     </Router>

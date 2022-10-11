@@ -135,7 +135,8 @@ userSchema.statics.login = async function(email, password) {
     if (!user) {
         throw Error("This user cannot be found.");
     }
-
+    token = createUserToken(user._id);
+    
     passwordIsAMatch = await bcrypt.compare(password, user.password);
 
     user = {
@@ -149,7 +150,6 @@ userSchema.statics.login = async function(email, password) {
         throw Error("The password you provided is incorrect.");
     }
 
-    token = createUserToken(user._id);
 
     return { user, token };
 

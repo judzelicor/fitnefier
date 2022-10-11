@@ -7,5 +7,6 @@ export function validateUsername(username) {
 }
 
 export function createUserToken(id) {
+    console.log(id, "token create id")
     return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: '1d' })
 }

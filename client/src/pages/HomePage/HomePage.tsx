@@ -5,15 +5,43 @@ import {
     Base
 } from "../../layouts";
 import { useUser } from "../../hooks";
+import { useNavigate } from "react-router-dom";
+import { WorkoutForm } from "../../components";
 
 function HomePage() {
-    useUser();
+    const user = useUser();
+    const navigate = useNavigate();
 
-    const user = useSelector(state => state.user);
+    useEffect(() => {
+        const fetchUserWorkouts = () => {
+            axios({
+                method: "GET",
+                url: "/api/v1/workouts",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${ user.token }`
+                }
+            })
+            .then(result => {})
+            .catch(error => {
+                if (error) {
+                    navigate("/");
+
+                }
+            })
+        }
+
+        fetchUserWorkouts();
+
+    }, [])
 
     return (
         <Base documentTitle={ "Dashboard | Fitnefier" }>
             <h1>Welcome back, { `${ user.firstName } ${ user.lastName }` }!</h1>
+            <div className={ "workouts" }></div>
+            <div className={ "workoutForm" }>
+                <WorkoutForm />
+            </div>
         </Base>
     )
 }

@@ -14,7 +14,8 @@ import {
 import { mongodb } from "./database/index.js";
 
 import {
-    errorHandlerMiddleware
+    errorHandlerMiddleware,
+    verifyUser
 } from "./middlewares/index.js";
 
 let server;
