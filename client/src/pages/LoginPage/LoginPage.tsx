@@ -9,7 +9,7 @@ import axios from "axios";
 import { useUser } from "../../hooks";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { InputErrorMessage } from "../../components";
+import {Footer, InputErrorMessage, TopBar} from "../../components";
 import { validateEmail } from "../../utils";
 
 function LoginPage() {
@@ -35,7 +35,7 @@ function LoginPage() {
         }
 
         else if (!validateEmail(form.values.userEmail)) {
-            errors["userEmail"] = "The email address you entered contains invalid characters";
+            errors["userEmail"] = "The email address you entered in invalid.";
         }
 
         form.raiseError(errors);
@@ -68,40 +68,54 @@ function LoginPage() {
 
     return (
         <Base documentTitle={ "Login | Fitnefier" }>
-            <>{ form.errors["loginError"] && <InputErrorMessage message={ form.errors["loginError"] } /> }</>
-            <>{ form.errors["missingFields"] && <InputErrorMessage message={ form.errors["missingFields"] } /> }</>
-            <form className={ "loginForm__pVy5" }>
+            <div className={ "loginPageContent__pVy5" }>
                 <div>
-                    <label className={ "formLabel__pVy5" }>Email address or username</label>
-                    <input
-                        value={ form.values.userEmail }
-                        type={ "email" }
-                        placeholder={ "Your email address or username" } 
-                        onChange={(event) => form.handleFormChanges("userEmail", event.target.value)}
-                    />
-                    <>{ form.errors["userEmail"] && <InputErrorMessage message={ form.errors["userEmail"] } /> }</>
+                    <TopBar />
                 </div>
-                <div>
-                    <label className={ "formLabel__pVy5" }>Password</label>
-                    <input
-                        value={ form.values.userPassword }
-                        type={ "password" }
-                        placeholder={ "Password" } 
-                        onChange={(event) => form.handleFormChanges("userPassword", event.target.value) }
-                    />
+                <div className={ "loginForm__pVy5" }>
+                    <div className={ "loginPageContentHeader__pVy5" }>
+                        <h2 className={ "pageTitle__pVy5" }>Login</h2>
+                        <div className={ "signupPrompt__pVy5" }>
+                            <p>New to Fitnefier? <Link className={ "signupLink__pVy5" } to={ "/signup" }>Sign up for free</Link></p>
+                        </div>
+                    </div>
+                    <div className={ "formErrors__pVy5" }>
+                        <>{ form.errors["loginError"] && <InputErrorMessage message={ form.errors["loginError"] } /> }</>
+                        <>{ form.errors["missingFields"] && <InputErrorMessage message={ form.errors["missingFields"] } /> }</>
+                    </div>
+                    <form className={ "loginForm__pVy5" }>
+                        <div className={ "formGroup__pVy5" }>
+                            <label className={ "formLabel__pVy5" }>Email address or username</label>
+                            <input
+                                className={ "formInput__pVy5" }
+                                value={ form.values.userEmail }
+                                type={ "email" }
+                                placeholder={ "Your email address or username" }
+                                onChange={(event) => form.handleFormChanges("userEmail", event.target.value)}
+                            />
+                            <>{ form.errors["userEmail"] && <InputErrorMessage message={ form.errors["userEmail"] } /> }</>
+                        </div>
+                        <div className={ "formGroup__pVy5" }>
+                            <label className={ "formLabel__pVy5" }>Password</label>
+                            <input
+                                className={ "formInput__pVy5" }
+                                value={ form.values.userPassword }
+                                type={ "password" }
+                                placeholder={ "Password" }
+                                onChange={(event) => form.handleFormChanges("userPassword", event.target.value) }
+                            />
+                        </div>
+                        <div className={ "formGroup__pVy5" }>
+                            <button
+                                className={ "loginButton__pVy5" }
+                                onClick={ handleSubmit }
+                            >
+                                Log in
+                            </button>
+                        </div>
+                    </form>
                 </div>
-                <div>
-                    <button 
-                        className={ "loginButton__pVy5" }
-                        onClick={ handleSubmit }
-                    >
-                        Log in
-                    </button>
-                </div>
-            </form>
-            <div>
-                <p>Don't have an account?</p>
-                <Link to={ "/signup" }>Sign up for free</Link>
+                <Footer />
             </div>
         </Base>
     )

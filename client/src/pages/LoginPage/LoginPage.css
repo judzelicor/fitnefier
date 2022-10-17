@@ -2,9 +2,11 @@
     background-color: #72ddf7;
     border-radius: 4px;
     font-weight: 500;
-    height: 32px;
+    height: 40px;
     transition: 500ms cubic-bezier(0.16, 1, 0.3, 1);
-    width: 80px;
+    margin: 0 auto;
+    margin-top: 32px;
+    width: 100%;
 }
 
 .loginButton__pVy5:hover {
@@ -18,4 +20,70 @@
 .formLabel__pVy5 {
     font-weight: bold;
     font-size: 14px;
+}
+
+.loginPageContent__pVy5 {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    height: 100%;
+}
+
+.pageTitle__pVy5 {
+    font-size: 26px;
+    font-family: "Clash Display", sans-serif;
+    font-weight: 700;
+    margin-bottom: 21px;
+}
+
+.formErrors__pVy5 {
+    padding: 0 25px;
+}
+
+.loginPageContentHeader__pVy5 {
+    padding: 0 25px;
+    text-align: center;
+}
+
+.loginForm__pVy5 {
+    align-items: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 25px;
+    max-width: 540px;
+    width: 100%;
+}
+
+.signupPrompt__pVy5 {
+    font-size: 14px;
+    margin-bottom: 21px;
+}
+
+.signupLink__pVy5 {
+    color: #72ddf7;
+}
+
+.formGroup__pVy5 {
+    margin-bottom: 12px;
+}
+
+.formInput__pVy5 {
+    font-size: 12px;
+    font-family: "General Sans", sans-serif;
+    height: 40px;
+    padding-left: 12px;
+    min-width: 200px;
+    width: 100%;
+}
+
+.formInput__pVy5::placeholder {
+    font-size: 12px;
+}
+
+.formLabel__pVy5 {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 9px;
 }

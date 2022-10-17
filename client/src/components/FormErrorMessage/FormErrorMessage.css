@@ -1,6 +1,6 @@
 .formInputErrorMessage__Llm9 {
     color: #f87171;
-    font-family: "Satoshi";
+    font-family: "General Sans";
     font-size: 12px;
 }
 
@@ -12,4 +12,8 @@
     align-items: center;
     display: flex;
     gap: 7px;
+    margin: 12px 0;
+    background-color: rgb(239, 68, 68, 0.25);
+    padding: 12px;
+    border-radius: 7px;
 }

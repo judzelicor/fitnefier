@@ -5,7 +5,6 @@ import Drawer from "./Drawer";
 import { ReactComponent as Logo } from "../../assets/images/logo.svg";
 import "./TopBar.css";
 import { useDispatch, useSelector } from "react-redux";
-import { useLogout } from "../../hooks";
 
 function TopBar() {
     const dispatch = useDispatch();
@@ -78,9 +77,6 @@ function TopBar() {
                                 </ul>
                             </div>
                         )}
-                        {
-                            user && <p onClick={ logoutUser }>Logout</p>
-                        }
                     </div>
                 </div>
             </header>
